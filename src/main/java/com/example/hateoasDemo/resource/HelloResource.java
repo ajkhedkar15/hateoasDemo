@@ -3,6 +3,7 @@ package com.example.hateoasDemo.resource;
 import com.example.hateoasDemo.model.User;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,16 @@ public class HelloResource {
 
         return Arrays.asList(user1, user2);
         //List.of(user1, user2);
+    }
+
+    @GetMapping("/{name}")
+    public User getUserDetails(@PathVariable String name){
+            if(name.equals("abc")){
+                return  new User("abc", " 12345", "abc@gmail.com");
+            }else {
+               return new User("xyz", " 98760", "xyz@gmail.com");
+            }
+
+
     }
 }
